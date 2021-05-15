@@ -1,0 +1,23 @@
+{
+  "credentials": {
+    "tenantName": "mediusapp",
+    "clientID": "dbe6187a-d704-47c2-b5f3-5bb88aaacbba"
+  },
+  "policies": {
+    "policyName": "B2C_1_SIGNUP_IN"
+  },
+  "resource": {
+    "scope": ["Files.Read"]
+  },
+  "metadata": {
+    "authority": "login.microsoftonline.com",
+    "discovery": ".well-known/openid-configuration",
+    "version": "v2.0"
+  },
+  "settings": {
+    "isB2C": true,
+    "validateIssuer": false,
+    "passReqToCallback": false,
+    "loggingLevel": "info"
+  }
+}

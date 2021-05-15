@@ -8,9 +8,11 @@ import {
 } from './movie.inputs';
 import { Schema as MongooseSchema } from 'mongoose';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { AzureADGuard } from '../auth/azureAd.guard';
+import { GetUser } from '../auth/get-user.decorator';
 
 @Resolver(() => Movie)
+@UseGuards(AzureADGuard)
 export class MoviesResolver {
   constructor(private readonly movieService: MovieService) {}
 
@@ -22,13 +24,12 @@ export class MoviesResolver {
   }
 
   @Query(() => [Movie])
-  @UseGuards(AuthGuard('oauth-bearer'))
   async movies(@Args('filters', { nullable: true }) filters?: ListMovieInput) {
     return this.movieService.list(filters);
   }
 
   @Mutation(() => Movie)
-  async createMovie(@Args('payload') payload: CreateMovieInput) {
+  async createMovie(@Args('payload') payload: CreateMovieInput, @GetUser() user: {username: string}) {
     return this.movieService.create(payload);
   }
 
