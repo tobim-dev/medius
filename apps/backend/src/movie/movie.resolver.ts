@@ -7,6 +7,8 @@ import {
   UpdateMovieInput,
 } from './movie.inputs';
 import { Schema as MongooseSchema } from 'mongoose';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 @Resolver(() => Movie)
 export class MoviesResolver {
@@ -20,6 +22,7 @@ export class MoviesResolver {
   }
 
   @Query(() => [Movie])
+  @UseGuards(AuthGuard('oauth-bearer'))
   async movies(@Args('filters', { nullable: true }) filters?: ListMovieInput) {
     return this.movieService.list(filters);
   }
