@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
-import { MoviesModule } from './movies/movies.module';
+import { MovieModule } from './movie/movie.module';
 
 @Module({
   imports: [
@@ -9,7 +9,7 @@ import { MoviesModule } from './movies/movies.module';
       autoSchemaFile: 'src/schema.gql',
     }),
     MongooseModule.forRoot('mongodb://localhost/medius'),
-    MoviesModule,
+    MovieModule,
   ],
 })
 export class AppModule {}

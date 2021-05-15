@@ -3,21 +3,39 @@
 # ------------------------------------------------------
 
 type Movie {
+  _id: String!
   title: String!
   subtitle: String!
-  releaseYear: Float!
+  releaseYear: Int!
 }
 
 type Query {
-  movies: [Movie!]!
+  movie(_id: String!): Movie!
+  movies(filters: ListMovieInput): [Movie!]!
+}
+
+input ListMovieInput {
+  _id: String
+  title: String
+  subtitle: String
+  releaseYear: String
 }
 
 type Mutation {
-  addMovie(movieData: MovieInput!): Movie!
+  createMovie(payload: CreateMovieInput!): Movie!
+  updateMovie(payload: UpdateMovieInput!): Movie!
+  deleteMovie(_id: String!): Movie!
 }
 
-input MovieInput {
+input CreateMovieInput {
   title: String!
   subtitle: String!
   releaseYear: Float!
+}
+
+input UpdateMovieInput {
+  _id: String!
+  title: String
+  subtitle: String
+  releaseYear: String
 }
