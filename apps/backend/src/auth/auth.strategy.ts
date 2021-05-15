@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import {  PassportStrategy } from '@nestjs/passport';
+import { PassportStrategy } from '@nestjs/passport';
 import { BearerStrategy } from 'passport-azure-ad';
-import * as config from './config.json'
+import * as config from './config.json';
 
 export interface User {
   username: string;
@@ -25,8 +25,7 @@ export class AzureADStrategy extends PassportStrategy(
   }
 
   async validate(payload): Promise<User> {
-    const user = {username: payload.name}
-    return user
+    return { username: payload.name }
   }
 }
 

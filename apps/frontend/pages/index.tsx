@@ -8,7 +8,6 @@ export function Index() {
 
   useEffect(() => {
     if (account) {
-      console.log(account.name);
       instance
         .acquireTokenSilent({
           scopes: [
@@ -18,14 +17,11 @@ export function Index() {
         })
         .then((response) => {
           if (response) {
-            console.log(response);
             setApiData(JSON.stringify(response));
           }
         });
     }
   }, [account, instance]);
-
-  const isAuthenticated = useIsAuthenticated();
 
   const handleLogin = () => {
     instance.loginPopup();
