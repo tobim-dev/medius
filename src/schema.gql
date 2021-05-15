@@ -1,0 +1,23 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Movie {
+  title: String!
+  subtitle: String!
+  releaseYear: Float!
+}
+
+type Query {
+  movies: [Movie!]!
+}
+
+type Mutation {
+  addMovie(movieData: MovieInput!): Movie!
+}
+
+input MovieInput {
+  title: String!
+  subtitle: String!
+  releaseYear: Float!
+}

@@ -8,7 +8,9 @@ export function Index() {
    */
   return (
     <div>
-      <p className="bg-gray-100"> Ein toller Paragraf</p>
+      <p className="bg-gray-100 text-center text-2xl h-20">
+        Ein toller Paragraf
+      </p>
     </div>
   );
 }
